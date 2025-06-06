@@ -29,8 +29,10 @@ await page.waitForLoadState('networkidle')
 //Add two items to the cart
 await page.click('button[name="add-to-cart-sauce-labs-backpack"]');
 await page.click('button[name="add-to-cart-sauce-labs-bike-light"]');
+await page.click('button[name="add-to-cart-sauce-labs-bolt-t-shirt"]');
+await page.click('button[name="add-to-cart-sauce-labs-fleece-jacket"]');
 
 const cartBadge = page.locator('.shopping_cart_badge');
 await expect(cartBadge).toBeVisible();
-await expect(cartBadge).toHaveText('2');
+await expect(cartBadge).toHaveText('4');
 });
