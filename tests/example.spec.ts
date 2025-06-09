@@ -43,10 +43,17 @@ await page.locator('.shopping_cart_badge').click();
 //Waits for the page to load after the cart is loaded
 await page.waitForLoadState('networkidle');
 
-//We are now on the cart summary page 
-await expect(page).toHaveTitle('Swag Labs');
-
 //We are checking that the other title which is not the main is correct 
 const orderSummary =page.locator('.header_secondary_container');
 await expect(orderSummary).toHaveText('Your Cart');
+
+//We are now clicking the Checkout button
+await page.click('Button[name="checkout"]');
+await page.waitForLoadState('networkidle');
+
+//Filling in the checkout page 
+const checkoutPage=page.locator('.header_secondary_container');
+await expect(checkoutPage).toHaveText('Checkout: Your Information');
+
+
 });
