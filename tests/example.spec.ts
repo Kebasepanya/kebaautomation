@@ -31,8 +31,10 @@ await page.click('button[name="add-to-cart-sauce-labs-backpack"]');
 await page.click('button[name="add-to-cart-sauce-labs-bike-light"]');
 await page.click('button[name="add-to-cart-sauce-labs-bolt-t-shirt"]');
 await page.click('button[name="add-to-cart-sauce-labs-fleece-jacket"]');
+await page.click('button[name="add-to-cart-sauce-labs-onesie"]');
+await page.click('button[name="add-to-cart-test.allthethings()-t-shirt-(red)"]');
 
 const cartBadge = page.locator('.shopping_cart_badge');
 await expect(cartBadge).toBeVisible();
-await expect(cartBadge).toHaveText('4');
+await expect(cartBadge).toHaveText('6');
 });
