@@ -34,7 +34,19 @@ await page.click('button[name="add-to-cart-sauce-labs-fleece-jacket"]');
 await page.click('button[name="add-to-cart-sauce-labs-onesie"]');
 await page.click('button[name="add-to-cart-test.allthethings()-t-shirt-(red)"]');
 
+//This checks that the correct amount of items are added to the cart as per the selection 
 const cartBadge = page.locator('.shopping_cart_badge');
 await expect(cartBadge).toBeVisible();
 await expect(cartBadge).toHaveText('6');
+await page.locator('.shopping_cart_badge').click();
+
+//Waits for the page to load after the cart is loaded
+await page.waitForLoadState('networkidle');
+
+//We are now on the cart summary page 
+await expect(page).toHaveTitle('Swag Labs');
+
+//We are checking that the other title which is not the main is correct 
+const orderSummary =page.locator('.header_secondary_container');
+await expect(orderSummary).toHaveText('Your Cart');
 });
